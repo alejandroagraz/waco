@@ -12,7 +12,7 @@ async function bootstrap() {
 
   setupSwagger(app);
 
-  await app.listen(4000);
+  await app.listen(3000);
 
   const url = await app
     .getUrl()
