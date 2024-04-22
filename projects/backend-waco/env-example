@@ -1,0 +1,11 @@
+
+### DATABASE_HOST_CONVENTIONAL ##
+MONO_DB_CONNECTION_STRING=mongodb+srv://joseagraz:G1JtGJqSh2kNz9iJ@cluster0.s075jix.mongodb.net/waco?retryWrites=true&w=majority&appName=Cluster0
+
+### DATABASE_HOST_DOCKER ##
+# MONO_DB_CONNECTION_STRING=mongodb://root:1234@database:27017/waco?authSource=admin
+
+API_EXT=https://pokeapi.co/api/v2/pokemon
+
+ALGORITHM=RS256
+TIME_TOKEN=4200s
