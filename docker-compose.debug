@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "${PORT_DB}:${PORT_DB}"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${USER_INIT_DB}
+      MONGO_INITDB_ROOT_PASSWORD: ${PASSWORD_DB}
+      MONGO_INITDB_DATABASE: ${NAME_DB}
+      MONGODB_DATABASE: ${NAME_DB}
+      MONGODB_USER: ${USER_DB}
+      MONGODB_PASSWORD: ${PASSWORD_DB}
+      command: mongod--auth
+
+  mongo-seed:
+    build:
+      context: ./docker-files/mongo
+      dockerfile: Dockerfile
+      args:
+        USERNAME: ${USER_DB}
+        PASSWORD: ${PASSWORD_DB}
+        DATABASE: ${PASSWORD_DB}
+    depends_on:
+      - database
+
+  api-server:
+    build:
+      context: ./projects/backend-waco
+      dockerfile: Dockerfile
+    env_file: .env
+    container_name: ${JOB_BASE_NAME}-${PROJECT_NAME_BACK}
+    image: server/${PROJECT_NAME_BACK}
+    ports:
+      - "${PORT_BACK}:${PORT_BACK}"
+    volumes:
+      - ./projects/backend-waco/:/app
+      - /app/node_modules
+      - /app/src/auths/certs
+    depends_on:
+      - database
+      - mongo-seed

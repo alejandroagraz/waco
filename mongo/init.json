@@ -1,0 +1,11 @@
+[{
+    "_id" : ObjectId("6626e074726e34e042e10855"),
+    "createdAt" : ISODate("2024-04-22T22:10:18.076Z"),
+    "email" : "joseagraz29@gmail.com",
+    "username" : "jagraz29",
+    "firstname" : "Jose",
+    "lastname" : "Agraz",
+    "gender" : "male",
+    "password" : "$2b$10$aYovFz2urzkHjfAVuD/Ouu3WxZ0OnUO4fOILTAqvv91Q4VRzgmraa",
+    "__v" : 0
+}]
