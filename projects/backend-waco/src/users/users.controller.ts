@@ -171,4 +171,34 @@ export class UsersController {
   ): Promise<PageDto<IUserFavoritesPokemon>> {
     return this._userService.getFavorites(id, pageOptionsDto);
   }
+
+  @Delete('favorite/pokemon/:id')
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({
+    summary: 'Delete a favorite pokemon according to its ID user',
+  })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: 'string',
+    example: '6172cc12a50810efa89d8859',
+  })
+  @ApiOkResponse({
+    status: 201,
+    description: 'Success remove favorite pokemon user',
+  })
+  @ApiUnauthorizedResponse({ status: 401, description: 'Unauthorized' })
+  @ApiBadGatewayResponse({ status: 502, description: 'Something happened' })
+  async removeFavoritePokemon(@Param('id', ParseObjectIdPipe) id: string) {
+    const resp = await this._userService.removeFavoritePokemon(id);
+
+    if (resp.deletedCount == 0) {
+      throw new HttpException(
+        'Favorite pokemon user not found',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    return { status: 200, message: 'Success remove favorite pokemon user' };
+  }
 }

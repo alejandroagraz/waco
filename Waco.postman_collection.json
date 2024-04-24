@@ -211,6 +211,38 @@
 					"response": []
 				},
 				{
+					"name": "Remove One Fovorite Pokemon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{access_token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/favorite/pokemon/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"favorite",
+								"pokemon",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6628e7dc278b6d45fbcc30b3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Add one favorite",
 					"request": {
 						"auth": {
@@ -296,7 +328,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/pokemons/?page=1&take=50",
+							"raw": "{{BASE_URL}}/pokemons/?page=1&take=20",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -311,7 +343,7 @@
 								},
 								{
 									"key": "take",
-									"value": "50"
+									"value": "20"
 								}
 							]
 						}

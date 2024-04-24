@@ -131,4 +131,8 @@ export class UsersService {
     const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto });
     return new PageDto(documents, pageMetaDto);
   }
+
+  async removeFavoritePokemon(id: string) {
+    return await this.userFavoritesPokemonModel.deleteOne({ _id: id }).exec();
+  }
 }

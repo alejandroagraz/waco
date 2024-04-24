@@ -18,7 +18,7 @@ services:
       
   mongo-seed:
     build:
-      context: ./docker-files/mongo
+      context: ./mongo
       dockerfile: Dockerfile
       args:
         USERNAME: ${USER_DB}
@@ -43,3 +43,17 @@ services:
     depends_on:
       - database
       - mongo-seed
+
+  app-client:
+    build:
+      context: ./projects/frontend-waco
+      dockerfile: Dockerfile
+    env_file: .env
+    container_name: ${JOB_BASE_NAME}-${PROJECT_NAME_FRONT}
+    image: server/${PROJECT_NAME_FRONT}
+    ports:
+      - "${PORT_FRONT}:${PORT_FRONT}"
+    volumes:
+      - ./projects/frontend-waco:/src
+    depends_on:
+      - api-server

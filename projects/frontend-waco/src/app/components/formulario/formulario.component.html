@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div class="container">
+    <h1 class="subheader">{{page_title}}</h1>
+
+    <form class="form-row" #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group col-md-6">
+        <label >Nombre</label>
+        <input type="text" name="firstname" #firstname="ngModel" [(ngModel)]="userNew.firstname"
+               required/>
+
+        <small *ngIf="!firstname.valid && firstname.touched">
+          El nombre no es válido
+        </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Apellido</label>
+        <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="userNew.lastname" required/>
+        <small *ngIf="!lastname.valid && lastname.touched">
+          El username no es válido
+        </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label >Username</label>
+        <input type="text" name="username" #username="ngModel" [(ngModel)]="userNew.username" required/>
+        <small *ngIf="!username.valid && username.touched">
+          El username no es válido
+        </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Email</label>
+        <input type="text" name="lastname" #email="ngModel" [(ngModel)]="userNew.email" required/>
+        <small *ngIf="!email.valid && email.touched">
+          El email no es válido
+        </small>
+      </div>
+
+      <div class="form-group col-md-8 center">
+        <label >Password</label>
+        <input type="text" name="password" #password="ngModel" [(ngModel)]="userNew.password"
+               required/>
+
+        <small *ngIf="!password.valid && password.touched">
+          Al menos 1 letra mayúscula, 1 letra minúscula, 1 número o carácter especial y una longitud mínima de 8 caracteres
+        </small>
+      </div>
+
+
+      <div class="form-group col-md-12 radibuttons">
+        <input type="radio" name="gender" value="male" #gender="ngModel" [(ngModel)]="userNew.gender" required /> Hombre
+        <input type="radio" name="gender" value="female" #gender="ngModel" [(ngModel)]="userNew.gender" /> Mujer
+        <input type="radio" name="gender" value="others" #gender="ngModel" [(ngModel)]="userNew.gender" /> Otro
+        <small *ngIf="!gender.valid && gender.touched">
+          El genero no es válido
+        </small>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <input type="submit" value="Enviar" class="btn btn-success center" style="margin-bottom: 20px" [disabled]="userForm.invalid" />
+
+    </form>
+
+</div>
+
+<app-footer></app-footer>

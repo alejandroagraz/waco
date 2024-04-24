@@ -1,0 +1,19 @@
+<h2>Login </h2>
+
+<span id="brand-login">
+  <strong>Test</strong>Angular
+</span>
+
+<form class="mid-form-login" #userForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="imgcontainer">
+    <img src="../../../assets/images/user_icon.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <input class="input-login" type="text" placeholder="Enter Username" name="username" #username="ngModel" [(ngModel)]="login.username"  required>
+
+    <input class="input-login" type="password" placeholder="Enter Password" name="password" #passwordd="ngModel" [(ngModel)]="login.password"  required>
+
+    <button class="btn-login" type="submit">Login</button>
+  </div>
+</form>

@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<div class="center" style="margin-bottom: 70px !important;">
+  <section id="content">
+
+<div class="loading" *ngIf="!users.data">
+  Cargando...
+</div>
+
+<div class="loading" *ngIf="users.data && users.data.length == 0">
+  No hay usuarios para mostrar, intentalo más tarde :)
+</div>
+
+<div id="articles" *ngIf="users.data">
+  <article class="article-item" *ngFor="let user of users.data">
+    <div class="image-wrap">
+      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="{{user.username}}" />
+    </div>
+
+    <h4>Name: {{user.firstname}}</h4>
+    <h4>Username: {{user.username}}</h4>
+
+    <span class="date">
+            {{user.createdAt | amLocale: 'es' | amTimeAgo }}
+        </span>
+    <a [routerLink]="['/user', user._id]">Leer más</a>
+
+    <div class="clearfix"></div>
+  </article>
+</div>
+
+  </section>
+
+  <app-sidebar></app-sidebar>
+</div>
+
+<app-footer></app-footer>

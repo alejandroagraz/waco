@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="container" style="margin-bottom: 70px !important;">
+  <div class="table gutters-mb">
+    <div class="tr col-md-12 mb-3" *ngIf="pokemons.data">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <h4 style="color: #eeeeee">Favorites pokemon user</h4>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive center">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>URL</th>
+              <th>Add user login</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let favorite of pokemons.data; let tabId = index">
+              <td>{{favorite.name}}</td>
+              <td>{{favorite.url}}</td>
+              <td>
+                <ul class="action-list">
+                  <li><a class="btn btn-danger"><i class="fa fa-arrow-circle-up" (click)="addFavorite(favorite)"></i></a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
