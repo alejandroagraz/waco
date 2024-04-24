@@ -28,7 +28,8 @@
 + ┌── waco
 + |  ├── mongo
 + |  ├── projects
-+ |  | └─ backend-jelou
++ |  | └─ backend-waco
++ |  | └─ frontend-waco
 + |  ├── docker-compose.debug
 + |  ├── docker-compose.yml
 + |  ├── README.md
